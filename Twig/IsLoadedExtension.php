@@ -26,7 +26,6 @@ class IsLoadedExtension extends \Twig\Extension\AbstractExtension
     {
         return [
             new \Twig\TwigTest('loaded', [$this, 'hasExtension'],[
-                'is_safe' => ['html'],
                 'needs_environment' => true // Tell twig we need the environment
             ]),
         ];
