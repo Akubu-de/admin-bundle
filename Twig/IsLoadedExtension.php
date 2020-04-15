@@ -15,21 +15,8 @@ namespace Nfq\AdminBundle\Twig;
  * Class IsLoadedExtension
  * @package Nfq\AdminBundle\Twig
  */
-class IsLoadedExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface
+class IsLoadedExtension extends \Twig\Extension\AbstractExtension
 {
-    /**
-     * @var \Twig_Environment
-     */
-    protected $environment;
-
-    /**
-     * @param \Twig_Environment $environment
-     */
-    public function initRuntime(\Twig_Environment $environment)
-    {
-        $this->environment = $environment;
-    }
-
     /**
      * Returns a list of functions to add to the existing list.
      *
@@ -38,7 +25,9 @@ class IsLoadedExtension extends \Twig_Extension implements \Twig_Extension_InitR
     public function getTests()
     {
         return [
-            new \Twig_SimpleTest('loaded', [$this, 'hasExtension']),
+            new \Twig\TwigTest('loaded', [$this, 'hasExtension'],[
+                'needs_environment' => true // Tell twig we need the environment
+            ]),
         ];
     }
 
@@ -47,9 +36,9 @@ class IsLoadedExtension extends \Twig_Extension implements \Twig_Extension_InitR
      *
      * @return boolean
      */
-    function hasExtension($name)
+    function hasExtension(\Twig\Environment $env,$name)
     {
-        return $this->environment->hasExtension($name);
+        return $env->hasExtension($name);
     }
 
     /**

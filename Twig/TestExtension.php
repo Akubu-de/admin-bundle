@@ -15,7 +15,7 @@ namespace Nfq\AdminBundle\Twig;
  * Class TestExtension
  * @package Nfq\AdminBundle\Twig
  */
-class TestExtension extends \Twig_Extension
+class TestExtension extends \Twig\Extension\AbstractExtension
 {
     /**
      * @return array
@@ -23,7 +23,7 @@ class TestExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('isActiveLocale', [$this, 'isActiveLocale']),
+            new \Twig\TwigFunction('isActiveLocale', [$this, 'isActiveLocale']),
         ];
     }
 
@@ -33,7 +33,7 @@ class TestExtension extends \Twig_Extension
     public function getTests()
     {
         return [
-            new \Twig_SimpleTest('boolean', [$this, 'isBoolean']),
+            new \Twig\TwigTest('boolean', [$this, 'isBoolean']),
         ];
     }
 
