@@ -36,9 +36,15 @@ class IsLoadedExtension extends \Twig\Extension\AbstractExtension
      *
      * @return boolean
      */
-    function hasExtension(\Twig\Environment $env,$name)
+    function hasExtension($name)
     {
-        return $env->hasExtension($name);
+        return isset($this->extensions[$name]);
+
+        /**
+         * This way of checking whether a particular extension exists 
+         * or not has been taken from following link:
+         * https://api.drupal.org/api/drupal/vendor%21twig%21twig%21lib%21Twig%21Environment.php/function/Twig_Environment%3A%3AhasExtension/8.2.x
+         */
     }
 
     /**
