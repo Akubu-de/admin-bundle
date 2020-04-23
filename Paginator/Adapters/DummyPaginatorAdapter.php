@@ -56,4 +56,8 @@ class DummyPaginatorAdapter extends AbstractPaginatorAdapter
     {
         return $this->target;
     }
+
+    function initPagination(){
+
+    }
 }
