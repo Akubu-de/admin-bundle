@@ -36,7 +36,7 @@ class IsLoadedExtension extends \Twig\Extension\AbstractExtension
      *
      * @return boolean
      */
-    function hasExtension($name)
+    function hasExtension(\Twig\Environment $env,$name)
     {
         return isset($this->extensions[$name]);
 
