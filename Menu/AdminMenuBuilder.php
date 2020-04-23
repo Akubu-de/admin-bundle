@@ -17,6 +17,8 @@ use Nfq\AdminBundle\Event\ConfigureMenuEvent;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class AdminMenuBuilder
@@ -26,18 +28,30 @@ class AdminMenuBuilder implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
+    private $factory;
+    private $dispatcher;
+    private $requestStack;
+
+    public function __construct(FactoryInterface $factory,EventDispatcher $dispatcher, RequestStack $requestStack)
+    {
+        $this->factory = $factory;
+        $this->dispatcher = $dispatcher;
+        $this->requestStack = $requestStack;
+    }
+
+
     /**
      * {@inheritdoc}
      */
-    public function buildSideMenu(FactoryInterface $factory)
+    public function buildSideMenu(array $option)
     {
-        $menu = $factory->createItem('root');
+        $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav');
         $menu->setChildrenAttribute('id', 'side-menu');
-
-        $this->container->get('event_dispatcher')->dispatch(
+    
+        $this->dispatcher->dispatch(
             ConfigureMenuEvent::SIDE_MENU,
-            new ConfigureMenuEvent($factory, $menu, $this->getCurrentRequest())
+            new ConfigureMenuEvent($this->factory, $menu, $this->getCurrentRequest())
         );
 
         $this->orderMenuItems($menu);
@@ -48,14 +62,14 @@ class AdminMenuBuilder implements ContainerAwareInterface
     /**
      * {@inheritdoc}
      */
-    public function buildHeaderMenu(FactoryInterface $factory)
+    public function buildHeaderMenu()
     {
-        $menu = $factory->createItem('root');
+        $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'dropdown-menu dropdown-user');
 
         $this->container->get('event_dispatcher')->dispatch(
             ConfigureMenuEvent::HEADER_MENU,
-            new ConfigureMenuEvent($factory, $menu, $this->getCurrentRequest())
+            new ConfigureMenuEvent($this->factory, $menu, $this->getCurrentRequest())
         );
 
         return $menu;
@@ -66,7 +80,7 @@ class AdminMenuBuilder implements ContainerAwareInterface
      */
     private function getCurrentRequest()
     {
-        return $this->container->get('request_stack')->getCurrentRequest();
+        return $this->requestStack->getCurrentRequest();
     }
 
     /**

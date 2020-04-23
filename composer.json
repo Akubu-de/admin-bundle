@@ -13,7 +13,7 @@
         "doctrine/orm": "~2.5",
         "doctrine/doctrine-bundle": "~1.5",
 
-        "knplabs/knp-menu-bundle": "~2"
+        "knplabs/knp-menu-bundle": "3.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~5.0"

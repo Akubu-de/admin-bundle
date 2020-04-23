@@ -90,3 +90,14 @@ services:
         class: Nfq\AdminBundle\Twig\ArrayUtilsExtension
         tags:
             - { name: twig.extension }
+
+    Symfony\Component\EventDispatcher\EventDispatcher:
+        class: Symfony\Component\EventDispatcher\EventDispatcher
+        public: true
+
+    Nfq\AdminBundle\Menu\AdminMenuBuilder:
+        class: Nfq\AdminBundle\Menu\AdminMenuBuilder
+        arguments: ["@knp_menu.factory"]
+        autowire: true
+        tags:
+            - { name: knp_menu.menu_builder, method: buildSideMenu, alias: nfq_admin_side_menu }
