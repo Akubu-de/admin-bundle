@@ -1,4 +1,12 @@
 services:
+
+    Nfq\AdminBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
+        autowire: true
+        autoconfigure: true
+        public: false
+
     nfq_admin.form_service:
         class: Nfq\AdminBundle\Service\FormManager
         arguments: [ '@form.factory' ]
@@ -41,8 +49,8 @@ services:
         class: Nfq\AdminBundle\Service\Generic\Actions\GenericActions
         arguments: [ '@doctrine.orm.entity_manager', '@event_dispatcher' ]
 
-    nfq_admin.paginator:
-        class: Nfq\AdminBundle\Paginator\Paginator
+    Nfq\AdminBundle\Paginator\Paginator:
+        alias: nfq_admin.paginator.default
 
     #Paginator adapter
     nfq_admin.paginator.knp_adapter:
