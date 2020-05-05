@@ -12,6 +12,7 @@
 namespace Nfq\AdminBundle\Controller\Traits;
 
 use Doctrine\ORM\Query;
+use Nfq\AdminBundle\Paginator\Paginator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -23,6 +24,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 trait CrudIndexController
 {
+    private $paginator;
+
+    public function __construct(Paginator $paginator)
+    {
+        $this->paginator = $paginator;
+    }
+
     /**
      * @var bool
      */
@@ -40,7 +48,7 @@ trait CrudIndexController
             'distinct' => $this->distinct,
         ];
 
-        $pagination = $this->get('nfq_admin.paginator.default')->getPagination(
+        $pagination = $this->paginator->getPagination(
                 $request,
                 $this->getIndexActionResults($request),
                 $options
