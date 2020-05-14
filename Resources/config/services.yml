@@ -10,6 +10,7 @@ services:
     Nfq\AdminBundle\Service\FormManager: '@nfq_admin.form_service'
     nfq_admin.form_service:
         class: Nfq\AdminBundle\Service\FormManager
+        autowire: true
         arguments: [ '@form.factory' ]
 
     nfq_admin.notice_service:
