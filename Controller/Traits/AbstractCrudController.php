@@ -11,6 +11,7 @@
 
 namespace Nfq\AdminBundle\Controller\Traits;
 
+use Nfq\AdminBundle\Service\FormManager;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -26,6 +27,9 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 trait AbstractCrudController
 {
+
+    private $nfq_admin_form_service;
+
     /**
      * Displays a form to edit an existing entity.
      * @deprecated
@@ -209,13 +213,22 @@ trait AbstractCrudController
         return $this->redirectToIndex($request, $entity);
     }
 
+     /**
+     * @required
+     * @param FormManager $form_service
+     */
+    public function setNfqAdminFormService(FormManager $form_service){
+        $this->nfq_admin_form_service = $form_service;
+    }
+
+
     /**
      * Get form service
      * @return \Nfq\AdminBundle\Service\FormManager
      */
     protected function getFormService()
     {
-        return $this->get('nfq_admin.form_service');
+        return $this->nfq_admin_form_service;
     }
 
     /**
