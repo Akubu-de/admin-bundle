@@ -24,6 +24,13 @@ trait CrudIndexController
 {
 
     /**
+     * The class using this trait must implement
+     * a dependency injection for Nfq\AdminBundle\Paginator\Paginator
+     * to set this $paginator.
+     */
+    private $paginator;
+
+    /**
      * @var bool
      */
     protected $distinct = true;
