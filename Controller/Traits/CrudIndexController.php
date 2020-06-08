@@ -12,8 +12,6 @@
 namespace Nfq\AdminBundle\Controller\Traits;
 
 use Doctrine\ORM\Query;
-use Nfq\AdminBundle\Paginator\Paginator;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,12 +22,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 trait CrudIndexController
 {
-    private $paginator;
-
-    public function __construct(Paginator $paginator)
-    {
-        $this->paginator = $paginator;
-    }
 
     /**
      * @var bool
