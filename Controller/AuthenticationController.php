@@ -15,14 +15,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * Class AuthenticationController
  * @package Nfq\AdminBundle\Controller
  */
-class AuthenticationController extends Controller
+class AuthenticationController extends AbstractController
 {
     /**
      * @Template()

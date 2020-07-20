@@ -12,14 +12,14 @@
 namespace Nfq\AdminBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class LocaleController
  * @package Nfq\AdminBundle\Controller
  */
-class LocaleController extends Controller
+class LocaleController extends AbstractController
 {
     /**
      * @Template()

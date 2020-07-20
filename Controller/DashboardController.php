@@ -12,14 +12,14 @@
 namespace Nfq\AdminBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class DashboardController
  * @package Nfq\AdminBundle\Controller
  */
-class DashboardController extends Controller
+class DashboardController extends AbstractController
 {
     /**
      * @Template()
