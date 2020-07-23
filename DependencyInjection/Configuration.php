@@ -27,8 +27,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('nfq_admin');
+        $treeBuilder = new TreeBuilder('nfq_admin');
         return $treeBuilder;
     }
 }
