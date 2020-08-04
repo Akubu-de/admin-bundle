@@ -6,9 +6,9 @@
     <title>{% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {% embed 'NfqAdminBundle:_layout:css_header.html.twig' %}{% endembed %}
+    {% embed '@NfqAdmin/_layout/css_header.html.twig' %}{% endembed %}
     {% block extra_css %}{% endblock %}
-    {% embed 'NfqAdminBundle:_layout:js_header.html.twig' %}{% endembed %}
+    {% embed '@NfqAdmin/_layout/js_header.html.twig' %}{% endembed %}
 </head>
 <body data-locale={{ currentLocale }}>
     <div id="wrapper">
@@ -26,17 +26,17 @@
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
-                {% include 'NfqAdminBundle::navigation_top.html.twig' %}
+                {% include '@NfqAdmin/navigation_top.html.twig' %}
             </ul>
 
             <div class="navbar-default navbar-static-side" role="navigation">
-                {% include 'NfqAdminBundle::navigation.html.twig' %}
+                {% include '@NfqAdmin/navigation.html.twig' %}
             </div>
         </nav>
 
         <!-- /.navbar-static-side -->
         <div id="page-wrapper">
-            {% include 'NfqAdminBundle::notices.html.twig' %}
+            {% include '@NfqAdmin/notices.html.twig' %}
             {% block submenu %}{% endblock %}
             {% block content %}{% endblock %}
         </div>
@@ -45,7 +45,7 @@
     <!-- Loading animation -->
     <div class="spinner hide"></div>
 
-    {% embed 'NfqAdminBundle:_layout:js_footer.html.twig' %}{% endembed %}
+    {% embed '@NfqAdmin/_layout/js_footer.html.twig' %}{% endembed %}
     {% block extra_js %}{% endblock %}
 </body>
 </html>

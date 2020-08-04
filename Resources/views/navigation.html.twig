@@ -1,6 +1,6 @@
 <div class="sidebar-collapse">
     {#{% if 'knp_menu' is loaded %}#}
-    {{ knp_menu_render('nfq_admin_side_menu', { 'template': 'NfqAdminBundle:Menu:_knp_menu.html.twig'}) }}
+    {{ knp_menu_render('nfq_admin_side_menu', { 'template': '@NfqAdmin/Menu/_knp_menu.html.twig'}) }}
     {#{% else %}#}
         {#<ul class="nav" id="side-menu">#}
             {#{% if app.environment == 'dev' %}#}
