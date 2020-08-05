@@ -13,7 +13,7 @@ namespace Nfq\AdminBundle\Event;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
