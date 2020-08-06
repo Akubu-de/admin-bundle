@@ -45,8 +45,9 @@ class AdminMenuBuilder implements ContainerAwareInterface
         $menu->setChildrenAttribute('id', 'side-menu');
 
         $this->dispatcher->dispatch(
-            ConfigureMenuEvent::SIDE_MENU,
-            new ConfigureMenuEvent($this->factory, $menu, $this->getCurrentRequest())
+            new ConfigureMenuEvent($this->factory, $menu, $this->getCurrentRequest()),
+            ConfigureMenuEvent::SIDE_MENU
+
         );
 
         $this->orderMenuItems($menu);
