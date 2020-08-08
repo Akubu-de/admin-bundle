@@ -1,6 +1,6 @@
 {% extends 'NfqAdminBundle::form.html.twig' %}
 {% block form_start %}
-    {% spaceless %}
+    {% apply spaceless %}
         {% set formNumber = random() %}
         <div style="display: none">
             <iframe name="modal_frame_{{ formNumber }}" id="modal_frame_{{ formNumber }}" class="modal_frame"></iframe>
@@ -18,14 +18,14 @@
         {% if form_method != method %}
             <input type="hidden" name="_method" value="{{ method }}" />
         {% endif %}
-    {% endspaceless %}
+    {% endapply %}
 {% endblock form_start %}
 
 {% block form_end %}
-    {% spaceless %}
+    {% apply spaceless %}
         {% if not render_rest is defined or render_rest %}
             {{ form_rest(form) }}
         {% endif %}
         </form>
-    {% endspaceless %}
+    {% endapply %}
 {% endblock form_end %}
