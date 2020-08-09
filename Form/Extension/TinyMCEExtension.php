@@ -52,6 +52,6 @@ class TinyMCEExtension extends AbstractTypeExtension
 
     public static function getExtendedTypes(): iterable
     {
-        return [FileType::class];
+        return [TextareaType::class];
     }
 }
