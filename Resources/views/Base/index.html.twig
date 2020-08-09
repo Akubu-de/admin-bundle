@@ -1,4 +1,4 @@
-{% extends 'NfqAdminBundle::layout.html.twig' %}
+{% extends '@NfqAdmin/layout.html.twig' %}
 
 {# these variables are kept here for BC #}
 {% set direction = 'ASC' %}
@@ -34,11 +34,11 @@
                 <div class="panel-body">
                     {% block contentPanel %}{% endblock %}
 
-                   {#{% if pagination is defined %}
-                        <div class="row">
-                            {% include 'NfqAdminBundle:Base/_blocks:_pagination.html.twig' %}
-                        </div>
-                    {% endif %}#}
+                    {#{% if pagination is defined %}
+                         <div class="row">
+                             {% include 'NfqAdminBundle:Base/_blocks:_pagination.html.twig' %}
+                         </div>
+                     {% endif %}#}
                 </div>
             </div>
         </div>
