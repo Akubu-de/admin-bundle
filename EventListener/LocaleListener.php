@@ -51,7 +51,7 @@ class LocaleListener implements EventSubscriberInterface
     {
         $request = $event->getRequest();
 
-        if ($locale = $request->get('_locale')) {
+        if ($locale = $request->getLocale()) {
             $request->getSession()->set('_locale', $locale);
         }
 
