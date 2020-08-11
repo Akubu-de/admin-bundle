@@ -185,6 +185,8 @@ abstract class GenericSearch implements GenericSearchInterface
 
         $this->extendQuery($request, $queryBuilder);
 
+        $queryBuilder->orderBy($request->query->get('sort'), $request->query->get('direction'));
+
         return $queryBuilder;
     }
 
