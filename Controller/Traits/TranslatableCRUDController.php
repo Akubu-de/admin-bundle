@@ -194,9 +194,9 @@ trait TranslatableCRUDController
      */
     protected function loadLocales($defaultFirst = false)
     {
-        $defaultLocale = $this->container->getParameter('locale');
-        $locales = ($this->container->hasParameter('locales'))
-            ? $this->container->getParameter('locales')
+        $defaultLocale = $this->getParameter('locale');
+        $locales = ($this->hasParameter('locales'))
+            ? $this->getParameter('locales')
             : [$defaultLocale];
 
         if ($defaultFirst) {
