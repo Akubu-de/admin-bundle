@@ -97,9 +97,13 @@ class Paginator implements DecoratedInterface
     {
         $adapter = $this->getAdapter();
 
+        if (isset($options['page'])) {
+            $optionsPage = $options['page'];
+        }
+
         $adapter
             ->setTarget($target)
-            ->setCurrentPage($request->query->get('page', 1))
+            ->setCurrentPage($request->query->get('page', $optionsPage ?? 1))
             ->setMaxPerPage($this->filterMaxPerPageValue($request))
             ->setOptions($options);
 

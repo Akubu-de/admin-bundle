@@ -47,6 +47,13 @@ trait CrudIndexController
             'distinct' => $this->distinct,
         ];
 
+        $session = $request->getSession();
+        if ($request->get('page') !== null) {
+            $session->set($request->getPathInfo(), $request->get('page'));
+        } else {
+            $options['page'] = $session->get($request->getPathInfo());
+        }
+
         $pagination = $this->paginator->getPagination(
                 $request,
                 $this->getIndexActionResults($request),
