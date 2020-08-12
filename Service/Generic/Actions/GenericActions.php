@@ -62,12 +62,12 @@ class GenericActions implements GenericActionsInterface
      */
     public function save(GenericEvent $before, $entity, GenericEvent $after)
     {
-        $this->dispatcher->dispatch($before->getEventName(), $before);
+        $this->dispatcher->dispatch($before, $before->getEventName());
         if ($before->isOk()) {
             $this->em->persist($entity);
             $this->em->flush();
         }
-        $this->dispatcher->dispatch($after->getEventName(), $after);
+        $this->dispatcher->dispatch($after, $after->getEventName());
     }
 
     /**
@@ -75,11 +75,11 @@ class GenericActions implements GenericActionsInterface
      */
     public function delete(GenericEvent $before, $entity, GenericEvent $after)
     {
-        $this->dispatcher->dispatch($before->getEventName(), $before);
+        $this->dispatcher->dispatch($before, $before->getEventName());
         if ($before->isOk()) {
             $this->em->remove($entity);
             $this->em->flush();
         }
-        $this->dispatcher->dispatch($after->getEventName(), $after);
+        $this->dispatcher->dispatch($after, $after->getEventName());
     }
 }
