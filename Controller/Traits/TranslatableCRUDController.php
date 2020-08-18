@@ -180,7 +180,7 @@ trait TranslatableCRUDController
         list($editForm,) = $this->getEditDeleteForms($entity);
         $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->saveAfterUpdateAction($entity);
 
             return $this->handleAfterSubmit($request, $editForm);
